@@ -838,7 +838,7 @@
                 /* Link in verticale */
                 align-items: center;
                 /* Centra i link */
-                padding: 20px 0;
+                padding: 0px 0;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
                 /* Transizione per l'apertura/chiusura */
                 max-height: 0;
@@ -855,30 +855,42 @@
             }
 
             .nav-links li {
-                margin-left: 0;
+                margin-right: 100px;
                 /* Rimuovi margine sinistro */
                 margin-bottom: 15px;
                 /* Aggiungi spazio tra i link */
                 width: 100%;
-                text-align: center;
+                text-align: right;
             }
 
-            .nav-links li:last-child {
-                margin-bottom: 0;
-            }
+
 
             .nav-links a {
                 padding: 10px 0;
                 /* Più area cliccabile */
                 width: 100%;
                 display: block;
+                position: relative;
                 /* Occupa tutta la larghezza */
             }
 
             .nav-links a::after {
-                /* Nascondi la linea sotto sui mobile */
-                display: none;
-            }
+    content: '';
+    position: absolute;
+    left: 100%;
+    transform: translateX(-25%);
+    bottom: 5px;
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 50%; /* o 100% se preferisci */
+}
 
 
             .mobile-menu-btn {
@@ -1187,9 +1199,7 @@
 
                 <div class="map-container">
                     <h3>Dove siamo</h3>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12565.171290691295!2d17.11727!3d39.0808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134084e1de6a9b77%3A0x100f8fc0c7d30da3!2sCentro%20storico%2C%20Crotone%20KR!5e0!3m2!1sit!2sit!4v1652456789012!5m2!1sit!2sit"
-                        allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.032794688906!2d17.126172112824943!3d39.082950735614254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1340490064927c23%3A0x7b045d43b61178fa!2sBRIO!5e0!3m2!1sit!2sit!4v1747099290806!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <p style="margin-top: 15px;">Siamo facilmente raggiungibili a piedi dal lungomare e dalle principali
                         attrazioni di Crotone. Parcheggio disponibile nelle vicinanze.</p>
                 </div>
