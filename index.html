@@ -353,14 +353,16 @@
         }
 
         .feature {
-            /* flex-basis: 30%; */
-            /* Rimuovi o commenta questa riga */
+            display: flex;
+            
             width: 100%;
             /* Aggiungi o modifica per occupare tutta la larghezza */
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             /* Aggiungi un margine inferiore per spaziatura */
             background-color: var(--white);
-            padding: 30px;
+            padding: 50px;
+            padding-top: 75px;
+            padding-bottom: 75px;
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             text-align: center;
@@ -368,6 +370,20 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+        }
+
+        .feature p {
+
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #444;
+            /* colore grigio scuro, elegante */
+            margin: 8px 0;
+            text-align: justify;
+            letter-spacing: 0.2px;
+            flex-basis: 50%;
+
         }
 
         /* Aggiungi questa regola per rimuovere il margine inferiore dall'ultimo elemento */
@@ -399,6 +415,7 @@
         .feature-icon {
             font-size: 48px;
             margin-bottom: 20px;
+            flex-basis: 50%;
             color: var(--primary-color);
             transition: all 0.5s ease;
         }
@@ -588,9 +605,14 @@
         }
 
         .menu-item p {
-            color: #555;
-            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
             line-height: 1.6;
+            color: #444;
+            /* colore grigio scuro, elegante */
+            margin: 8px 0;
+            text-align: left;
+            letter-spacing: 0.2px;
         }
 
         .menu-item .price {
@@ -875,22 +897,23 @@
             }
 
             .nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 100%;
-    transform: translateX(-25%);
-    bottom: 5px;
-    height: 2px;
-    width: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
+                content: '';
+                position: absolute;
+                left: 100%;
+                transform: translateX(-100px);
+                bottom: 5px;
+                height: 2px;
+                width: 0;
+                background-color: var(--primary-color);
+                transition: width 0.3s ease;
+            }
 
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 50%; /* o 100% se preferisci */
-}
+            .nav-links a:hover::after,
+            .nav-links a.active::after {
+                width: 50%;
+                /* o 100% se preferisci */
+            }
 
 
             .mobile-menu-btn {
@@ -942,24 +965,24 @@
                 <div class="feature">
                     <div class="feature-icon">
                         <i class="fas fa-bread-slice"></i>
+                        <h2>Lievitati Artigianali</h2>
                     </div>
-                    <h2>Lievitati Artigianali</h2>
                     <p>I nostri lievitati sono preparati con lievito madre e farine selezionate. Lunghe lievitazioni
                         naturali garantiscono leggerezza e digeribilità.</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-cocktail"></i>
-                    </div>
-                    <h2>Aperitivi Ricercati</h2>
                     <p>Cocktail tradizionali e creazioni originali accompagnati da sfiziosi taglieri e stuzzichini
                         preparati con ingredienti freschi e locali.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-cocktail"></i>
+                        <h2>Aperitivi Ricercati</h2>
+                    </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
                         <i class="fas fa-map-marker-alt"></i>
+                        <h2>Posizione Centrale</h2>
                     </div>
-                    <h2>Posizione Centrale</h2>
                     <p>Situati nel cuore del centro storico di Crotone, siamo facilmente raggiungibili a piedi e vicini
                         alle principali attrazioni della città.</p>
                 </div>
@@ -1064,7 +1087,7 @@
                     <div id="cocktail" class="menu-page">
                         <h2>Cocktail e Bevande</h2>
                         <div class="menu-items">
-                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                            <div class="menu-item" data-image="./resources/Spritz.jpg">
                                 <h3>Spritz Brio</h3>
                                 <p>La nostra versione dello Spritz con Aperol, prosecco, soda e un tocco di liquore ai
                                     frutti di bosco.</p>
@@ -1138,7 +1161,7 @@
             </div>
 
             <div class="food-image-display">
-                <img src="/api/placeholder/400/300" alt="Immagine piatto" id="food-image">
+                <img src="./resources/Logo.png" alt="Immagine piatto" id="food-image">
             </div>
         </section>
 
@@ -1199,7 +1222,10 @@
 
                 <div class="map-container">
                     <h3>Dove siamo</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.032794688906!2d17.126172112824943!3d39.082950735614254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1340490064927c23%3A0x7b045d43b61178fa!2sBRIO!5e0!3m2!1sit!2sit!4v1747099290806!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.032794688906!2d17.126172112824943!3d39.082950735614254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1340490064927c23%3A0x7b045d43b61178fa!2sBRIO!5e0!3m2!1sit!2sit!4v1747099290806!5m2!1sit!2sit"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <p style="margin-top: 15px;">Siamo facilmente raggiungibili a piedi dal lungomare e dalle principali
                         attrazioni di Crotone. Parcheggio disponibile nelle vicinanze.</p>
                 </div>
@@ -1349,22 +1375,31 @@
             const foodImage = document.getElementById('food-image');
 
             if (menuItems.length > 0 && foodImage) {
-                const defaultImageSrc = foodImage.src; // Salva l'immagine di default
+                const defaultImageSrc = foodImage.src;
 
                 menuItems.forEach(item => {
                     item.addEventListener('mouseenter', function () {
                         const imageSrc = this.getAttribute('data-image');
-                        const itemName = this.querySelector('h3')?.textContent || "Piatto"; // Prende il nome o usa un default
+                        const itemName = this.querySelector('h3')?.textContent || "Piatto";
+
                         if (imageSrc) {
-                            foodImage.src = imageSrc;
-                            foodImage.alt = itemName; // Aggiorna l'attributo alt per accessibilità
+                            const testImage = new Image();
+                            testImage.onload = function () {
+                                foodImage.src = imageSrc;
+                                foodImage.alt = itemName;
+                            };
+                            testImage.onerror = function () {
+                                foodImage.src = defaultImageSrc;
+                                foodImage.alt = "Immagine non trovata - immagine di default";
+                            };
+                            testImage.src = imageSrc; // Inizia il test caricamento immagine
                         }
                     });
 
-                    // Optional: Riporta all'immagine di default quando il mouse esce
-                    // item.addEventListener('mouseleave', function() {
-                    //    foodImage.src = defaultImageSrc;
-                    //    foodImage.alt = "Immagine piatto";
+                    // facoltativo: reset all'uscita del mouse
+                    // item.addEventListener('mouseleave', function () {
+                    //     foodImage.src = defaultImageSrc;
+                    //     foodImage.alt = "Immagine piatto";
                     // });
                 });
             }
