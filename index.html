@@ -1,7 +1,1177 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brio Food & Drink - Lievitati e Aperitivi a Crotone</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #002e17;
+            --secondary-color: #4caf50;
+            --accent-color: #f1c40f;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            padding: 5px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            transition: all 0.3s;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        /* Pages container */
+        .page {
+            display: none;
+            padding: 40px 0;
+            min-height: calc(100vh - 180px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Home page */
+        .hero {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 46, 23, 0.05);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(0, 46, 23, 0.05);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+            animation: slideInLeft 1s ease;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            animation: slideInRight 1s ease;
+            position: relative;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 46, 23, 0.2) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .hero-image:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--secondary-color);
+            transition: all 0.4s ease;
+            z-index: -1;
+            border-radius: 30px;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            color: var(--white);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .features {
+    /* display: flex; */ /* Rimuovi o commenta questa riga */
+    /* justify-content: space-between; */ /* Rimuovi o commenta questa riga */
+    /* flex-wrap: wrap; */ /* Rimuovi o commenta questa riga */
+    display: block; /* Aggiungi questa riga */
+    margin-bottom: 60px;
+}
+
+.feature {
+    /* flex-basis: 30%; */ /* Rimuovi o commenta questa riga */
+    width: 100%; /* Aggiungi o modifica per occupare tutta la larghezza */
+    margin-bottom: 30px; /* Aggiungi un margine inferiore per spaziatura */
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Aggiungi questa regola per rimuovere il margine inferiore dall'ultimo elemento */
+.feature:last-child {
+    margin-bottom: 0;
+}
+        
+        .feature::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, rgba(0, 46, 23, 0.05) 0%, rgba(255,255,255,0) 100%);
+            transition: height 0.5s ease;
+            z-index: -1;
+        }
+        
+        .feature:hover::before {
+            height: 100%;
+        }
+        
+        .feature:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            transition: all 0.5s ease;
+        }
+        
+        .feature:hover .feature-icon {
+            transform: scale(1.15);
+            color: var(--secondary-color);
+        }
+        
+        .testimonials {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 150px;
+            color: rgba(0, 46, 23, 0.05);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(0, 46, 23, 0.02);
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .author {
+            font-weight: bold;
+            text-align: right;
+            color: var(--primary-color);
+        }
+        
+        /* Menu page */
+        .menu-container {
+            display: flex;
+            margin-bottom: 40px;
+        }
+        
+        .menu-navigation {
+            flex: 1;
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-right: 30px;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        
+        .menu-navigation ul {
+            list-style: none;
+        }
+        
+        .menu-navigation li {
+            margin-bottom: 15px;
+            cursor: pointer;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background-color: var(--light-bg);
+        }
+        
+        .menu-navigation li:hover, .menu-navigation li.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .menu-content {
+            flex: 3;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        
+        .menu-page {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .menu-page.active {
+            display: block;
+        }
+        
+        .menu-items {
+    /* Stili esistenti (display: grid, gap, etc.) rimangono */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+
+    /* Aggiungi queste proprietà per la scrollbar */
+    max-height: 400px; /* Imposta un'altezza massima (puoi regolarla) */
+    overflow-y: auto; /* Mostra la scrollbar verticale solo se necessario */
+    padding-right: 10px; /* Opzionale: aggiunge spazio per la scrollbar per non sovrapporsi ai contenuti */
+}
+        
+        .menu-item {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, rgba(0, 46, 23, 0.05) 0%, rgba(255,255,255,0) 100%);
+            transition: height 0.5s ease;
+            z-index: -1;
+        }
+        
+        .menu-item:hover::before {
+            height: 100%;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item h3 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            font-size: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .menu-item h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: -2px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover h3::after {
+            width: 100%;
+        }
+        
+        .menu-item p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .menu-item .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 12px;
+            font-size: 18px;
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: rgba(0, 46, 23, 0.08);
+            border-radius: 20px;
+        }
+        
+        .food-image-display {
+            background-color: var(--white);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .food-image-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 46, 23, 0.05) 0%, rgba(76, 175, 80, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .food-image-display:hover::before {
+            opacity: 1;
+        }
+        
+        .food-image-display img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .food-image-display:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        /* Contacts page */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .contact-info {
+            background-color: var(--white);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container {
+            background-color: var(--white);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .map-container h3 {
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+        
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Media queries for responsive design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+            
+            .feature {
+                margin-bottom: 30px;
+            }
+            
+            .menu-container {
+                flex-direction: column;
+            }
+            
+            .menu-navigation {
+                margin-right: 0;
+                margin-bottom: 30px;
+                position: static;
+                max-height: none;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Brio <span>Food & Drink</span></div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="menu">Menù</a></li>
+                    <li><a href="#" data-page="contacts">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Benvenuti a Brio Food & Drink</h1>
+                    <p>Nel cuore del centro storico di Crotone, <strong>Brio Food & Drink</strong> offre un'esperienza culinaria unica che unisce tradizione e innovazione. Specializzati in lievitati artigianali e aperitivi ricercati, portiamo in tavola sapori autentici e prodotti di qualità.</p>
+                    <p>Il nostro locale accogliente è il luogo ideale per colazioni, pranzi leggeri, aperitivi e cene in compagnia. Venite a scoprire il nostro menù e lasciatevi conquistare dall'atmosfera unica di Brio!</p>
+                    <a href="#" class="btn" data-page="menu">Scopri il Menù</a>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/600/400" alt="Brio Food & Drink locale">
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h2>Lievitati Artigianali</h2>
+                    <p>I nostri lievitati sono preparati con lievito madre e farine selezionate. Lunghe lievitazioni naturali garantiscono leggerezza e digeribilità.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h2>Aperitivi Ricercati</h2>
+                    <p>Cocktail tradizionali e creazioni originali accompagnati da sfiziosi taglieri e stuzzichini preparati con ingredienti freschi e locali.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h2>Posizione Centrale</h2>
+                    <p>Situati nel cuore del centro storico di Crotone, siamo facilmente raggiungibili a piedi e vicini alle principali attrazioni della città.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Menu Page -->
+        <section id="menu" class="page">
+            <h1>Il nostro Menù</h1>
+            <p>Da Brio Food & Drink troverai una selezione di lievitati artigianali, piatti freschi e aperitivi creativi. Tutti i nostri prodotti sono preparati con ingredienti di prima qualità, spesso provenienti da produttori locali.</p>
+            
+            <div class="menu-container">
+                <div class="menu-navigation">
+                    <h3>Categorie</h3>
+                    <ul>
+                        <li class="active" data-category="lievitati">Lievitati</li>
+                        <li data-category="aperitivi">Aperitivi</li>
+                        <li data-category="cocktail">Cocktail</li>
+                        <li data-category="dolci">Dolci</li>
+                    </ul>
+                </div>
+                
+                <div class="menu-content">
+                    <div id="lievitati" class="menu-page active">
+                        <h2>I Nostri Lievitati</h2>
+                        <div class="menu-items">
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Focaccia Classica</h3>
+                                <p>Impasto a lunga lievitazione con olio extra vergine d'oliva, sale marino e rosmarino fresco.</p>
+                                <div class="price">€ 4.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Pizza Margherita</h3>
+                                <p>Base di lievito madre, pomodoro San Marzano, fiordilatte e basilico fresco.</p>
+                                <div class="price">€ 7.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Pane Cafone</h3>
+                                <p>Pane tradizionale con farina di grano duro. Crosta croccante e mollica soffice.</p>
+                                <div class="price">€ 3.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Panino al Prosciutto di Parma</h3>
+                                <p>Panino artigianale con prosciutto crudo di Parma 24 mesi, stracciatella e rucola.</p>
+                                <div class="price">€ 8.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Croissant Salato</h3>
+                                <p>Croissant sfogliato con mortadella, stracciatella e granella di pistacchio.</p>
+                                <div class="price">€ 6.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Maritozzo Salato</h3>
+                                <p>Maritozzo ripieno di stracciatella, tonno, pomodorini e capperi.</p>
+                                <div class="price">€ 7.50</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="aperitivi" class="menu-page">
+                        <h2>Aperitivi e Stuzzichini</h2>
+                        <div class="menu-items">
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Tagliere Brio</h3>
+                                <p>Selezione di salumi e formaggi del territorio, serviti con miele, marmellate e focaccia.</p>
+                                <div class="price">€ 15.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Polpette di Melanzane</h3>
+                                <p>Polpette di melanzane con cuore filante di provola affumicata.</p>
+                                <div class="price">€ 8.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Tartine Assortite</h3>
+                                <p>Sei tartine con diversi ripieni: tonno e capperi, salmone e avocado, prosciutto e fichi.</p>
+                                <div class="price">€ 9.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Fritto Misto</h3>
+                                <p>Selezione di verdure pastellate e fritte, arancini e crocchette di patate.</p>
+                                <div class="price">€ 12.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Insalata di Mare</h3>
+                                <p>Polpo, gamberi, calamari e seppioline con patate, sedano e olio al limone.</p>
+                                <div class="price">€ 14.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Bruschette Miste</h3>
+                                <p>Quattro bruschette con diversi condimenti: pomodoro e basilico, 'nduja, olive e acciughe, verdure grigliate.</p>
+                                <div class="price">€ 8.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="cocktail" class="menu-page">
+                        <h2>Cocktail e Bevande</h2>
+                        <div class="menu-items">
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Spritz Brio</h3>
+                                <p>La nostra versione dello Spritz con Aperol, prosecco, soda e un tocco di liquore ai frutti di bosco.</p>
+                                <div class="price">€ 7.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Negroni Calabrese</h3>
+                                <p>Gin, Campari, Vermouth rosso e un tocco di 'nduja liquida per un sapore piccante.</p>
+                                <div class="price">€ 8.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Mojito al Bergamotto</h3>
+                                <p>Rum bianco, menta fresca, zucchero di canna, lime e sciroppo di bergamotto.</p>
+                                <div class="price">€ 8.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Moscow Mule</h3>
+                                <p>Vodka, succo di lime fresco, ginger beer e foglie di menta.</p>
+                                <div class="price">€ 7.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Calice di Vino</h3>
+                                <p>Selezione di vini bianchi, rossi e rosati del territorio.</p>
+                                <div class="price">da € 5.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Birre Artigianali</h3>
+                                <p>Selezione di birre artigianali in bottiglia e alla spina.</p>
+                                <div class="price">da € 5.50</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="dolci" class="menu-page">
+                        <h2>Dolci e Dessert</h2>
+                        <div class="menu-items">
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Tiramisù</h3>
+                                <p>Classico tiramisù con savoiardi, mascarpone, caffè e cacao.</p>
+                                <div class="price">€ 6.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Croissant alla Crema</h3>
+                                <p>Croissant sfogliato ripieno di crema pasticcera artigianale.</p>
+                                <div class="price">€ 4.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Torta al Cioccolato</h3>
+                                <p>Torta al cioccolato fondente con cuore morbido e gelato alla vaniglia.</p>
+                                <div class="price">€ 7.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Cannolo Siciliano</h3>
+                                <p>Cannolo croccante ripieno di ricotta di pecora, gocce di cioccolato e granella di pistacchio.</p>
+                                <div class="price">€ 5.50</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Panna Cotta</h3>
+                                <p>Panna cotta con coulis di frutti di bosco freschi.</p>
+                                <div class="price">€ 5.00</div>
+                            </div>
+                            <div class="menu-item" data-image="/api/placeholder/350/300">
+                                <h3>Pastiera Napoletana</h3>
+                                <p>Tradizionale pastiera napoletana con grano, ricotta e aromi.</p>
+                                <div class="price">€ 6.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="food-image-display">
+                <img src="/api/placeholder/400/300" alt="Immagine piatto" id="food-image">
+            </div>
+        </section>
+        
+        <!-- Contacts Page -->
+        <section id="contacts" class="page">
+            <h1>Contattaci</h1>
+            <p>Vieni a trovarci nel centro storico di Crotone o contattaci per prenotazioni e informazioni.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>I nostri contatti</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <strong>Indirizzo:</strong><br>
+                            Via del Centro, 42<br>
+                            Centro Storico, Crotone (KR)
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <strong>Telefono:</strong><br>
+                            +39 0962 123456
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <strong>Email:</strong><br>
+                            info@briofooddrink.it
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <strong>Orari di apertura:</strong><br>
+                            Lunedì - Giovedì: 10:00 - 23:00<br>
+                            Venerdì - Domenica: 10:00 - 01:00
+                        </div>
+                    </div>
+                    
+                    <h3>Social</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <h3>Dove siamo</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12565.171290691295!2d17.11727!3d39.0808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134084e1de6a9b77%3A0x100f8fc0c7d30da3!2sCentro%20storico%2C%20Crotone%20KR!5e0!3m2!1sit!2sit!4v1652456789012!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+                    <p style="margin-top: 15px;">Siamo facilmente raggiungibili a piedi dal lungomare e dalle principali attrazioni di Crotone. Parcheggio disponibile nelle vicinanze.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Brio <span>Food & Drink</span></div>
+            <div class="footer-links">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="menu">Menù</a>
+                <a href="#" data-page="contacts">Contatti</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Brio Food & Drink - Tutti i diritti riservati
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn[data-page]');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-links a').forEach(el => {
+                        el.classList.remove('active');
+                        if (el.getAttribute('data-page') === pageId) {
+                            el.classList.add('active');
+                        }
+                    });
+                    
+                    // Show active page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === pageId) {
+                            page.classList.add('active');
+                        }
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Menu categories navigation
+            const menuCategories = document.querySelectorAll('.menu-navigation li');
+            const menuPages = document.querySelectorAll('.menu-page');
+            
+            menuCategories.forEach(category => {
+                category.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category');
+                    
+                    // Update active category
+                    menuCategories.forEach(el => {
+                        el.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Show active menu page
+                    menuPages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === categoryId) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Menu item hover to show image
+            const menuItems = document.querySelectorAll('.menu-item');
+            const foodImage = document.getElementById('food-image');
+            const defaultImageSrc = foodImage.src;
+            
+            menuItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const imageSrc = this.getAttribute('data-image');
+                    if (imageSrc) {
+                        foodImage.src = imageSrc;
+                        foodImage.alt = this.querySelector('h3').textContent;
+                    }
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    // Optional: Reset to default image
+                    // foodImage.src = defaultImageSrc;
+                    // foodImage.alt = "Immagine piatto";
+                });
+            });
+        });
+    </script>
 </body>
 </html>
