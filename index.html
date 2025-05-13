@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brio Food & Drink - Lievitati e Aperitivi a Crotone</title>
     <style>
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
+
         @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
-        
+
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', Arial, sans-serif;
         }
-        
+
         :root {
             --primary-color: #002e17;
             --secondary-color: #4caf50;
@@ -46,66 +83,66 @@
             --light-bg: #f8f9fa;
             --white: #ffffff;
         }
-        
+
         body {
             background-color: var(--light-bg);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header styles */
         header {
             background-color: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
             transition: all 0.4s ease;
         }
-        
+
         header.scrolled {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             padding: 5px 0;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
-        
+
         .logo {
             font-size: 28px;
             font-weight: 700;
             color: var(--primary-color);
             transition: all 0.3s ease;
         }
-        
+
         .logo:hover {
             transform: scale(1.05);
         }
-        
+
         .logo span {
             color: var(--secondary-color);
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
@@ -115,11 +152,12 @@
             transition: all 0.3s;
             padding: 5px 0;
         }
-        
-        .nav-links a:hover, .nav-links a.active {
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--primary-color);
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -130,18 +168,19 @@
             left: 0;
             transition: width 0.3s ease;
         }
-        
-        .nav-links a:hover::after, .nav-links a.active::after {
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
-        
+
         .mobile-menu-btn {
             display: none;
             cursor: pointer;
             font-size: 24px;
             color: var(--primary-color);
         }
-        
+
         /* Pages container */
         .page {
             display: none;
@@ -149,11 +188,11 @@
             min-height: calc(100vh - 180px);
             animation: fadeIn 0.8s ease forwards;
         }
-        
+
         .page.active {
             display: block;
         }
-        
+
         /* Home page */
         .hero {
             display: flex;
@@ -162,7 +201,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -174,7 +213,7 @@
             border-radius: 50%;
             z-index: -1;
         }
-        
+
         .hero::after {
             content: '';
             position: absolute;
@@ -186,20 +225,20 @@
             border-radius: 50%;
             z-index: -1;
         }
-        
+
         .hero-content {
             flex: 1;
             padding-right: 40px;
             animation: slideInLeft 1s ease;
         }
-        
+
         .hero-image {
             flex: 1;
             text-align: center;
             animation: slideInRight 1s ease;
             position: relative;
         }
-        
+
         .hero-image::before {
             content: '';
             position: absolute;
@@ -213,23 +252,23 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         .hero-image:hover::before {
             opacity: 1;
         }
-        
+
         .hero-image img {
             max-width: 100%;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
         }
-        
+
         .hero-image:hover img {
             transform: scale(1.03);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
-        
+
         h1 {
             font-size: 42px;
             margin-bottom: 20px;
@@ -237,7 +276,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         h1::after {
             content: '';
             position: absolute;
@@ -248,18 +287,18 @@
             left: 0;
             border-radius: 2px;
         }
-        
+
         h2 {
             font-size: 32px;
             margin-bottom: 15px;
             color: var(--primary-color);
         }
-        
+
         p {
             margin-bottom: 20px;
             line-height: 1.8;
         }
-        
+
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -273,7 +312,7 @@
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -286,49 +325,56 @@
             z-index: -1;
             border-radius: 30px;
         }
-        
+
         .btn:hover::before {
             width: 100%;
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             color: var(--white);
         }
-        
+
         .btn:active {
             transform: translateY(-1px);
         }
-        
+
         .features {
-    /* display: flex; */ /* Rimuovi o commenta questa riga */
-    /* justify-content: space-between; */ /* Rimuovi o commenta questa riga */
-    /* flex-wrap: wrap; */ /* Rimuovi o commenta questa riga */
-    display: block; /* Aggiungi questa riga */
-    margin-bottom: 60px;
-}
+            /* display: flex; */
+            /* Rimuovi o commenta questa riga */
+            /* justify-content: space-between; */
+            /* Rimuovi o commenta questa riga */
+            /* flex-wrap: wrap; */
+            /* Rimuovi o commenta questa riga */
+            display: block;
+            /* Aggiungi questa riga */
+            margin-bottom: 60px;
+        }
 
-.feature {
-    /* flex-basis: 30%; */ /* Rimuovi o commenta questa riga */
-    width: 100%; /* Aggiungi o modifica per occupare tutta la larghezza */
-    margin-bottom: 30px; /* Aggiungi un margine inferiore per spaziatura */
-    background-color: var(--white);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
+        .feature {
+            /* flex-basis: 30%; */
+            /* Rimuovi o commenta questa riga */
+            width: 100%;
+            /* Aggiungi o modifica per occupare tutta la larghezza */
+            margin-bottom: 30px;
+            /* Aggiungi un margine inferiore per spaziatura */
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-/* Aggiungi questa regola per rimuovere il margine inferiore dall'ultimo elemento */
-.feature:last-child {
-    margin-bottom: 0;
-}
-        
+        /* Aggiungi questa regola per rimuovere il margine inferiore dall'ultimo elemento */
+        .feature:last-child {
+            margin-bottom: 0;
+        }
+
         .feature::before {
             content: '';
             position: absolute;
@@ -336,41 +382,41 @@
             left: 0;
             width: 100%;
             height: 0;
-            background: linear-gradient(to top, rgba(0, 46, 23, 0.05) 0%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to top, rgba(0, 46, 23, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
             transition: height 0.5s ease;
             z-index: -1;
         }
-        
+
         .feature:hover::before {
             height: 100%;
         }
-        
+
         .feature:hover {
             transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        
+
         .feature-icon {
             font-size: 48px;
             margin-bottom: 20px;
             color: var(--primary-color);
             transition: all 0.5s ease;
         }
-        
+
         .feature:hover .feature-icon {
             transform: scale(1.15);
             color: var(--secondary-color);
         }
-        
+
         .testimonials {
             background-color: var(--white);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
-        
+
         .testimonials::before {
             content: '"';
             position: absolute;
@@ -380,7 +426,7 @@
             color: rgba(0, 46, 23, 0.05);
             font-family: Georgia, serif;
         }
-        
+
         .testimonial {
             font-style: italic;
             margin-bottom: 30px;
@@ -390,12 +436,12 @@
             position: relative;
             transition: all 0.3s ease;
         }
-        
+
         .testimonial:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
-        
+
         .testimonial::before {
             content: '';
             position: absolute;
@@ -406,36 +452,36 @@
             background-color: var(--primary-color);
             border-radius: 2px;
         }
-        
+
         .author {
             font-weight: bold;
             text-align: right;
             color: var(--primary-color);
         }
-        
+
         /* Menu page */
         .menu-container {
             display: flex;
             margin-bottom: 40px;
         }
-        
+
         .menu-navigation {
             flex: 1;
             background-color: var(--white);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             margin-right: 30px;
             position: sticky;
             top: 100px;
             max-height: calc(100vh - 120px);
             overflow-y: auto;
         }
-        
+
         .menu-navigation ul {
             list-style: none;
         }
-        
+
         .menu-navigation li {
             margin-bottom: 15px;
             cursor: pointer;
@@ -445,43 +491,47 @@
             font-weight: 500;
             background-color: var(--light-bg);
         }
-        
-        .menu-navigation li:hover, .menu-navigation li.active {
+
+        .menu-navigation li:hover,
+        .menu-navigation li.active {
             background-color: var(--primary-color);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .menu-content {
             flex: 3;
             background-color: var(--white);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
-        
+
         .menu-page {
             display: none;
             animation: fadeIn 0.6s ease;
         }
-        
+
         .menu-page.active {
             display: block;
         }
-        
-        .menu-items {
-    /* Stili esistenti (display: grid, gap, etc.) rimangono */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
 
-    /* Aggiungi queste proprietà per la scrollbar */
-    max-height: 400px; /* Imposta un'altezza massima (puoi regolarla) */
-    overflow-y: auto; /* Mostra la scrollbar verticale solo se necessario */
-    padding-right: 10px; /* Opzionale: aggiunge spazio per la scrollbar per non sovrapporsi ai contenuti */
-}
-        
+        .menu-items {
+            /* Stili esistenti (display: grid, gap, etc.) rimangono */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+
+            /* Aggiungi queste proprietà per la scrollbar */
+            max-height: 400px;
+            /* Imposta un'altezza massima (puoi regolarla) */
+            overflow-y: auto;
+            /* Mostra la scrollbar verticale solo se necessario */
+            padding-right: 10px;
+            /* Opzionale: aggiunge spazio per la scrollbar per non sovrapporsi ai contenuti */
+        }
+
         .menu-item {
             background-color: var(--light-bg);
             padding: 20px;
@@ -492,7 +542,7 @@
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .menu-item::before {
             content: '';
             position: absolute;
@@ -500,20 +550,20 @@
             left: 0;
             width: 100%;
             height: 0;
-            background: linear-gradient(to bottom, rgba(0, 46, 23, 0.05) 0%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to bottom, rgba(0, 46, 23, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
             transition: height 0.5s ease;
             z-index: -1;
         }
-        
+
         .menu-item:hover::before {
             height: 100%;
         }
-        
+
         .menu-item:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .menu-item h3 {
             margin-bottom: 12px;
             color: var(--primary-color);
@@ -521,7 +571,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .menu-item h3::after {
             content: '';
             position: absolute;
@@ -532,17 +582,17 @@
             left: 0;
             transition: width 0.3s ease;
         }
-        
+
         .menu-item:hover h3::after {
             width: 100%;
         }
-        
+
         .menu-item p {
             color: #555;
             font-size: 14px;
             line-height: 1.6;
         }
-        
+
         .menu-item .price {
             font-weight: bold;
             color: var(--primary-color);
@@ -553,13 +603,13 @@
             background-color: rgba(0, 46, 23, 0.08);
             border-radius: 20px;
         }
-        
+
         .food-image-display {
             background-color: var(--white);
             padding: 25px;
             margin-top: 40px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             text-align: center;
             height: 350px;
             display: flex;
@@ -568,7 +618,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .food-image-display::before {
             content: '';
             position: absolute;
@@ -580,57 +630,57 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         .food-image-display:hover::before {
             opacity: 1;
         }
-        
+
         .food-image-display img {
             max-width: 100%;
             max-height: 300px;
             border-radius: 10px;
             transition: all 0.5s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .food-image-display:hover img {
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Contacts page */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
-        
+
         .contact-info {
             background-color: var(--white);
             padding: 35px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.4s ease;
         }
-        
+
         .contact-info:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .contact-info h3 {
             margin-bottom: 25px;
             color: var(--primary-color);
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 10px;
         }
-        
+
         .contact-item {
             display: flex;
             margin-bottom: 20px;
             align-items: flex-start;
         }
-        
+
         .contact-icon {
             color: var(--primary-color);
             font-size: 22px;
@@ -638,12 +688,12 @@
             min-width: 30px;
             text-align: center;
         }
-        
+
         .social-links {
             display: flex;
             margin-top: 20px;
         }
-        
+
         .social-links a {
             display: inline-flex;
             align-items: center;
@@ -656,41 +706,41 @@
             margin-right: 15px;
             transition: all 0.3s ease;
         }
-        
+
         .social-links a:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .map-container {
             background-color: var(--white);
             padding: 35px;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.4s ease;
         }
-        
+
         .map-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .map-container h3 {
             margin-bottom: 25px;
             color: var(--primary-color);
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 10px;
         }
-        
+
         .map-container iframe {
             width: 100%;
             height: 300px;
             border: none;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        
+
         /* Footer */
         footer {
             background-color: var(--primary-color);
@@ -698,101 +748,148 @@
             padding: 40px 0 20px;
             margin-top: 80px;
         }
-        
+
         footer .container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .footer-logo {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 20px;
         }
-        
+
         .footer-logo span {
             color: var(--secondary-color);
         }
-        
+
         .footer-links {
             display: flex;
             margin-bottom: 20px;
         }
-        
+
         .footer-links a {
             color: var(--white);
             text-decoration: none;
             margin: 0 15px;
             transition: all 0.3s ease;
         }
-        
+
         .footer-links a:hover {
             color: var(--accent-color);
         }
-        
+
         .copyright {
             text-align: center;
             margin-top: 20px;
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
-        
+
         /* Media queries for responsive design */
         @media (max-width: 992px) {
             .hero {
                 flex-direction: column;
             }
-            
+
             .hero-content {
                 padding-right: 0;
                 margin-bottom: 40px;
             }
-            
+
             .features {
                 flex-direction: column;
             }
-            
+
             .feature {
                 margin-bottom: 30px;
             }
-            
+
             .menu-container {
                 flex-direction: column;
             }
-            
+
             .menu-navigation {
                 margin-right: 0;
                 margin-bottom: 30px;
                 position: static;
                 max-height: none;
             }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
+                /* display: none; */
+                /* Rimuoviamo display: none; lo gestiamo con JS/classe */
+                position: absolute;
+                /* Posizionamento assoluto rispetto all'header */
+                top: 100%;
+                /* Sotto l'header */
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                /* Link in verticale */
+                align-items: center;
+                /* Centra i link */
+                padding: 20px 0;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                /* Transizione per l'apertura/chiusura */
+                max-height: 0;
+                /* Inizia chiuso */
+                overflow: hidden;
+                /* Nasconde il contenuto quando chiuso */
+                transition: max-height 0.5s ease-out;
+            }
+
+            .nav-links.mobile-menu-open {
+                /* Classe per mostrare il menu */
+                max-height: 300px;
+                /* Altezza sufficiente per i link (regolabile) */
+            }
+
+            .nav-links li {
+                margin-left: 0;
+                /* Rimuovi margine sinistro */
+                margin-bottom: 15px;
+                /* Aggiungi spazio tra i link */
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links li:last-child {
+                margin-bottom: 0;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+                /* Più area cliccabile */
+                width: 100%;
+                display: block;
+                /* Occupa tutta la larghezza */
+            }
+
+            .nav-links a::after {
+                /* Nascondi la linea sotto sui mobile */
                 display: none;
             }
-            
+
+
             .mobile-menu-btn {
                 display: block;
-            }
-            
-            h1 {
-                font-size: 36px;
-            }
-            
-            h2 {
-                font-size: 28px;
+                /* Mostra il pulsante hamburger */
             }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -803,55 +900,67 @@
                     <li><a href="#" data-page="menu">Menù</a></li>
                     <li><a href="#" data-page="contacts">Contatti</a></li>
                 </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
             </nav>
         </div>
     </header>
-    
+
     <main class="container">
         <!-- Home Page -->
         <section id="home" class="page active">
             <div class="hero">
                 <div class="hero-content">
                     <h1>Benvenuti a Brio Food & Drink</h1>
-                    <p>Nel cuore del centro storico di Crotone, <strong>Brio Food & Drink</strong> offre un'esperienza culinaria unica che unisce tradizione e innovazione. Specializzati in lievitati artigianali e aperitivi ricercati, portiamo in tavola sapori autentici e prodotti di qualità.</p>
-                    <p>Il nostro locale accogliente è il luogo ideale per colazioni, pranzi leggeri, aperitivi e cene in compagnia. Venite a scoprire il nostro menù e lasciatevi conquistare dall'atmosfera unica di Brio!</p>
+                    <p>Nel cuore del centro storico di Crotone, <strong>Brio Food & Drink</strong> offre un'esperienza
+                        culinaria unica che unisce tradizione e innovazione. Specializzati in lievitati artigianali e
+                        aperitivi ricercati, portiamo in tavola sapori autentici e prodotti di qualità.</p>
+                    <p>Il nostro locale accogliente è il luogo ideale per colazioni, pranzi leggeri, aperitivi e cene in
+                        compagnia. Venite a scoprire il nostro menù e lasciatevi conquistare dall'atmosfera unica di
+                        Brio!</p>
                     <a href="#" class="btn" data-page="menu">Scopri il Menù</a>
                 </div>
                 <div class="hero-image">
                     <img src="/api/placeholder/600/400" alt="Brio Food & Drink locale">
                 </div>
             </div>
-            
+
             <div class="features">
                 <div class="feature">
                     <div class="feature-icon">
                         <i class="fas fa-bread-slice"></i>
                     </div>
                     <h2>Lievitati Artigianali</h2>
-                    <p>I nostri lievitati sono preparati con lievito madre e farine selezionate. Lunghe lievitazioni naturali garantiscono leggerezza e digeribilità.</p>
+                    <p>I nostri lievitati sono preparati con lievito madre e farine selezionate. Lunghe lievitazioni
+                        naturali garantiscono leggerezza e digeribilità.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
                         <i class="fas fa-cocktail"></i>
                     </div>
                     <h2>Aperitivi Ricercati</h2>
-                    <p>Cocktail tradizionali e creazioni originali accompagnati da sfiziosi taglieri e stuzzichini preparati con ingredienti freschi e locali.</p>
+                    <p>Cocktail tradizionali e creazioni originali accompagnati da sfiziosi taglieri e stuzzichini
+                        preparati con ingredienti freschi e locali.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h2>Posizione Centrale</h2>
-                    <p>Situati nel cuore del centro storico di Crotone, siamo facilmente raggiungibili a piedi e vicini alle principali attrazioni della città.</p>
+                    <p>Situati nel cuore del centro storico di Crotone, siamo facilmente raggiungibili a piedi e vicini
+                        alle principali attrazioni della città.</p>
                 </div>
             </div>
         </section>
-        
+
         <!-- Menu Page -->
         <section id="menu" class="page">
             <h1>Il nostro Menù</h1>
-            <p>Da Brio Food & Drink troverai una selezione di lievitati artigianali, piatti freschi e aperitivi creativi. Tutti i nostri prodotti sono preparati con ingredienti di prima qualità, spesso provenienti da produttori locali.</p>
-            
+            <p>Da Brio Food & Drink troverai una selezione di lievitati artigianali, piatti freschi e aperitivi
+                creativi. Tutti i nostri prodotti sono preparati con ingredienti di prima qualità, spesso provenienti da
+                produttori locali.</p>
+
             <div class="menu-container">
                 <div class="menu-navigation">
                     <h3>Categorie</h3>
@@ -862,14 +971,15 @@
                         <li data-category="dolci">Dolci</li>
                     </ul>
                 </div>
-                
+
                 <div class="menu-content">
                     <div id="lievitati" class="menu-page active">
                         <h2>I Nostri Lievitati</h2>
                         <div class="menu-items">
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Focaccia Classica</h3>
-                                <p>Impasto a lunga lievitazione con olio extra vergine d'oliva, sale marino e rosmarino fresco.</p>
+                                <p>Impasto a lunga lievitazione con olio extra vergine d'oliva, sale marino e rosmarino
+                                    fresco.</p>
                                 <div class="price">€ 4.50</div>
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
@@ -899,13 +1009,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id="aperitivi" class="menu-page">
                         <h2>Aperitivi e Stuzzichini</h2>
                         <div class="menu-items">
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Tagliere Brio</h3>
-                                <p>Selezione di salumi e formaggi del territorio, serviti con miele, marmellate e focaccia.</p>
+                                <p>Selezione di salumi e formaggi del territorio, serviti con miele, marmellate e
+                                    focaccia.</p>
                                 <div class="price">€ 15.00</div>
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
@@ -915,7 +1026,8 @@
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Tartine Assortite</h3>
-                                <p>Sei tartine con diversi ripieni: tonno e capperi, salmone e avocado, prosciutto e fichi.</p>
+                                <p>Sei tartine con diversi ripieni: tonno e capperi, salmone e avocado, prosciutto e
+                                    fichi.</p>
                                 <div class="price">€ 9.00</div>
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
@@ -930,18 +1042,20 @@
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Bruschette Miste</h3>
-                                <p>Quattro bruschette con diversi condimenti: pomodoro e basilico, 'nduja, olive e acciughe, verdure grigliate.</p>
+                                <p>Quattro bruschette con diversi condimenti: pomodoro e basilico, 'nduja, olive e
+                                    acciughe, verdure grigliate.</p>
                                 <div class="price">€ 8.00</div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id="cocktail" class="menu-page">
                         <h2>Cocktail e Bevande</h2>
                         <div class="menu-items">
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Spritz Brio</h3>
-                                <p>La nostra versione dello Spritz con Aperol, prosecco, soda e un tocco di liquore ai frutti di bosco.</p>
+                                <p>La nostra versione dello Spritz con Aperol, prosecco, soda e un tocco di liquore ai
+                                    frutti di bosco.</p>
                                 <div class="price">€ 7.00</div>
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
@@ -971,7 +1085,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id="dolci" class="menu-page">
                         <h2>Dolci e Dessert</h2>
                         <div class="menu-items">
@@ -992,7 +1106,8 @@
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
                                 <h3>Cannolo Siciliano</h3>
-                                <p>Cannolo croccante ripieno di ricotta di pecora, gocce di cioccolato e granella di pistacchio.</p>
+                                <p>Cannolo croccante ripieno di ricotta di pecora, gocce di cioccolato e granella di
+                                    pistacchio.</p>
                                 <div class="price">€ 5.50</div>
                             </div>
                             <div class="menu-item" data-image="/api/placeholder/350/300">
@@ -1009,17 +1124,17 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="food-image-display">
                 <img src="/api/placeholder/400/300" alt="Immagine piatto" id="food-image">
             </div>
         </section>
-        
+
         <!-- Contacts Page -->
         <section id="contacts" class="page">
             <h1>Contattaci</h1>
             <p>Vieni a trovarci nel centro storico di Crotone o contattaci per prenotazioni e informazioni.</p>
-            
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>I nostri contatti</h3>
@@ -1061,7 +1176,7 @@
                             Venerdì - Domenica: 10:00 - 01:00
                         </div>
                     </div>
-                    
+
                     <h3>Social</h3>
                     <div class="social-links">
                         <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1069,16 +1184,19 @@
                         <a href="#" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="map-container">
                     <h3>Dove siamo</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12565.171290691295!2d17.11727!3d39.0808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134084e1de6a9b77%3A0x100f8fc0c7d30da3!2sCentro%20storico%2C%20Crotone%20KR!5e0!3m2!1sit!2sit!4v1652456789012!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
-                    <p style="margin-top: 15px;">Siamo facilmente raggiungibili a piedi dal lungomare e dalle principali attrazioni di Crotone. Parcheggio disponibile nelle vicinanze.</p>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12565.171290691295!2d17.11727!3d39.0808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134084e1de6a9b77%3A0x100f8fc0c7d30da3!2sCentro%20storico%2C%20Crotone%20KR!5e0!3m2!1sit!2sit!4v1652456789012!5m2!1sit!2sit"
+                        allowfullscreen="" loading="lazy"></iframe>
+                    <p style="margin-top: 15px;">Siamo facilmente raggiungibili a piedi dal lungomare e dalle principali
+                        attrazioni di Crotone. Parcheggio disponibile nelle vicinanze.</p>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <div class="footer-logo">Brio <span>Food & Drink</span></div>
@@ -1092,86 +1210,172 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Page navigation
-            const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn[data-page]');
+        document.addEventListener('DOMContentLoaded', function () {
             const pages = document.querySelectorAll('.page');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const pageId = this.getAttribute('data-page');
-                    
-                    // Update active link
-                    document.querySelectorAll('.nav-links a').forEach(el => {
-                        el.classList.remove('active');
-                        if (el.getAttribute('data-page') === pageId) {
-                            el.classList.add('active');
-                        }
-                    });
-                    
-                    // Show active page
-                    pages.forEach(page => {
-                        page.classList.remove('active');
-                        if (page.id === pageId) {
-                            page.classList.add('active');
-                        }
-                    });
-                    
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-            
-            // Menu categories navigation
-            const menuCategories = document.querySelectorAll('.menu-navigation li');
-            const menuPages = document.querySelectorAll('.menu-page');
-            
-            menuCategories.forEach(category => {
-                category.addEventListener('click', function() {
-                    const categoryId = this.getAttribute('data-category');
-                    
-                    // Update active category
-                    menuCategories.forEach(el => {
-                        el.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Show active menu page
-                    menuPages.forEach(page => {
-                        page.classList.remove('active');
-                        if (page.id === categoryId) {
-                            page.classList.add('active');
-                        }
-                    });
-                });
-            });
-            
-            // Menu item hover to show image
-            const menuItems = document.querySelectorAll('.menu-item');
-            const foodImage = document.getElementById('food-image');
-            const defaultImageSrc = foodImage.src;
-            
-            menuItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    const imageSrc = this.getAttribute('data-image');
-                    if (imageSrc) {
-                        foodImage.src = imageSrc;
-                        foodImage.alt = this.querySelector('h3').textContent;
+            const navLinksContainer = document.querySelector('.nav-links'); // Container ul dei link nav
+            const allNavLinks = document.querySelectorAll('.nav-links a');     // Link <a> dentro .nav-links
+            const footerLinks = document.querySelectorAll('.footer-links a');
+            const ctaButtons = document.querySelectorAll('.btn[data-page]');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const header = document.querySelector('header');
+
+            // --- Helper Function per Cambiare Pagina ---
+            function switchToPage(pageId) {
+                if (!pageId) return; // Esce se pageId non è valido
+
+                // Aggiorna link attivo nella nav principale
+                allNavLinks.forEach(el => {
+                    el.classList.remove('active');
+                    if (el.getAttribute('data-page') === pageId) {
+                        el.classList.add('active');
                     }
                 });
-                
-                item.addEventListener('mouseleave', function() {
-                    // Optional: Reset to default image
-                    // foodImage.src = defaultImageSrc;
-                    // foodImage.alt = "Immagine piatto";
+
+                // Mostra la pagina attiva
+                let pageFound = false;
+                pages.forEach(page => {
+                    if (page.id === pageId) {
+                        page.classList.add('active');
+                        pageFound = true;
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+
+                // Se la pagina esiste, scrolla all'inizio
+                if (pageFound) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    console.warn(`Pagina con ID "${pageId}" non trovata.`);
+                }
+            }
+
+            // --- Logica Menu Mobile ---
+            if (mobileMenuBtn && navLinksContainer) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    // Aggiunge o rimuove la classe per mostrare/nascondere
+                    navLinksContainer.classList.toggle('mobile-menu-open');
+                });
+            }
+
+            // --- Logica di Navigazione (Link Nav Principale) ---
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault(); // Previene il comportamento predefinito del link
+                    const pageId = this.getAttribute('data-page');
+
+                    // Chiudi il menu mobile se è aperto
+                    if (navLinksContainer && navLinksContainer.classList.contains('mobile-menu-open')) {
+                        navLinksContainer.classList.remove('mobile-menu-open');
+                    }
+
+                    // Cambia pagina
+                    switchToPage(pageId);
                 });
             });
+
+            // --- Logica di Navigazione (Link Footer) ---
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    switchToPage(pageId);
+                });
+            });
+
+            // --- Logica di Navigazione (Pulsanti CTA - Call to Action) ---
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    switchToPage(pageId);
+                });
+            });
+
+
+            // --- Navigazione Categorie Menu ---
+            const menuCategories = document.querySelectorAll('.menu-navigation li');
+            const menuPages = document.querySelectorAll('.menu-page');
+
+            if (menuCategories.length > 0 && menuPages.length > 0) {
+                // Imposta la prima categoria come attiva all'inizio
+                if (menuCategories[0]) {
+                    menuCategories[0].classList.add('active');
+                }
+                if (menuPages[0]) {
+                    menuPages[0].classList.add('active');
+                }
+
+                menuCategories.forEach(category => {
+                    category.addEventListener('click', function () {
+                        const categoryId = this.getAttribute('data-category');
+                        if (!categoryId) return;
+
+                        // Aggiorna categoria attiva
+                        menuCategories.forEach(el => el.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Mostra pagina menu attiva
+                        let menuPageFound = false;
+                        menuPages.forEach(page => {
+                            if (page.id === categoryId) {
+                                page.classList.add('active');
+                                menuPageFound = true;
+                            } else {
+                                page.classList.remove('active');
+                            }
+                        });
+                        if (!menuPageFound) {
+                            console.warn(`Pagina menu con ID "${categoryId}" non trovata.`);
+                        }
+                    });
+                });
+            }
+
+            // --- Effetto Hover Immagine Menu Item ---
+            const menuItems = document.querySelectorAll('.menu-item');
+            const foodImage = document.getElementById('food-image');
+
+            if (menuItems.length > 0 && foodImage) {
+                const defaultImageSrc = foodImage.src; // Salva l'immagine di default
+
+                menuItems.forEach(item => {
+                    item.addEventListener('mouseenter', function () {
+                        const imageSrc = this.getAttribute('data-image');
+                        const itemName = this.querySelector('h3')?.textContent || "Piatto"; // Prende il nome o usa un default
+                        if (imageSrc) {
+                            foodImage.src = imageSrc;
+                            foodImage.alt = itemName; // Aggiorna l'attributo alt per accessibilità
+                        }
+                    });
+
+                    // Optional: Riporta all'immagine di default quando il mouse esce
+                    // item.addEventListener('mouseleave', function() {
+                    //    foodImage.src = defaultImageSrc;
+                    //    foodImage.alt = "Immagine piatto";
+                    // });
+                });
+            }
+
+            // --- Effetto Header allo Scroll ---
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) { // Cambia 50 se vuoi che l'effetto si attivi prima/dopo
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // --- Inizializzazione: Assicura che la pagina 'home' sia attiva al caricamento ---
+            // (Potrebbe non essere strettamente necessario se 'active' è già nel HTML, ma è una sicurezza)
+            switchToPage('home');
+
         });
     </script>
 </body>
+
 </html>
