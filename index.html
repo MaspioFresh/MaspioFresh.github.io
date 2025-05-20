@@ -82,6 +82,7 @@
             --text-color: #333;
             --light-bg: #f8f9fa;
             --white: #ffffff;
+            --dark-bg: #000000;
         }
 
         body {
@@ -478,11 +479,14 @@
 
         /* Menu page */
         .menu-container {
-            display: flex;
-            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 50%));
+            margin-top: 15px;
+            align-items: center;
         }
 
         .menu-navigation {
+            display: flex;
             flex: 1;
             background-color: var(--white);
             padding: 25px;
@@ -492,11 +496,14 @@
             position: sticky;
             top: 100px;
             max-height: calc(100vh - 120px);
-            overflow-y: auto;
+            overflow-x: auto;
         }
 
         .menu-navigation ul {
             list-style: none;
+                display: flex; /* elementi in riga */
+    gap: 15px; /* spazio tra gli elementi */
+                white-space: nowrap;
         }
 
         .menu-navigation li {
@@ -507,6 +514,7 @@
             transition: all 0.3s ease;
             font-weight: 500;
             background-color: var(--light-bg);
+
         }
 
         .menu-navigation li:hover,
@@ -536,8 +544,8 @@
 
         .menu-items {
             /* Stili esistenti (display: grid, gap, etc.) rimangono */
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: list-item;
+
             gap: 25px;
 
             /* Aggiungi queste proprietà per la scrollbar */
@@ -558,6 +566,7 @@
             cursor: pointer;
             overflow: hidden;
             z-index: 1;
+            margin: 5px;
         }
 
         .menu-item::before {
@@ -633,7 +642,7 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             text-align: center;
-            height: 350px;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -659,7 +668,7 @@
 
         .food-image-display img {
             max-width: 100%;
-            max-height: 300px;
+
             border-radius: 10px;
             transition: all 0.5s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -996,9 +1005,8 @@
                 creativi. Tutti i nostri prodotti sono preparati con ingredienti di prima qualità, spesso provenienti da
                 produttori locali.</p>
 
-            <div class="menu-container">
                 <div class="menu-navigation">
-                    <h3>Categorie</h3>
+                    <h2>Categorie</h2>
                     <ul>
                         <li class="active" data-category="lievitati">Lievitati</li>
                         <li data-category="aperitivi">Aperitivi</li>
@@ -1006,6 +1014,7 @@
                         <li data-category="dolci">Dolci</li>
                     </ul>
                 </div>
+            <div class="menu-container">
 
                 <div class="menu-content">
                     <div id="lievitati" class="menu-page active">
@@ -1158,11 +1167,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="food-image-display">
+                    <img src="./resources/Logo.png" alt="Immagine piatto" id="food-image">
+                </div>
             </div>
 
-            <div class="food-image-display">
-                <img src="./resources/Logo.png" alt="Immagine piatto" id="food-image">
-            </div>
         </section>
 
         <!-- Contacts Page -->
